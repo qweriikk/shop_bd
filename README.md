@@ -71,3 +71,9 @@ FROM orders o
 JOIN basket b ON o.basket_id = b.id
 JOIN client c ON b.client_id = c.id;
 ```
+
+## Пользовательская функция
+#### Запрос вернет количество уникальных продуктов в корзине с идентификатором 1.
+```sql
+SELECT count_unique_products_in_basket(1);
+```
