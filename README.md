@@ -40,3 +40,5 @@ JOIN basket_has_products bhp ON b.id = bhp.basket_id
 JOIN products p ON bhp.products_id = p.id
 WHERE p.tittle = 'DARK MOON MEMORABILIA';
 ```
+
+## Хранимые процедуры
