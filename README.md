@@ -31,7 +31,7 @@ JOIN products p ON bhp.products_id = p.id
 WHERE o.order_date BETWEEN '2024-05-20' AND '2024-05-25';
 ```
 
-#### 5. Получение всех клиентов, которые заказывали конкретный продукт:
+### 5. Получение всех клиентов, которые заказывали конкретный продукт:
 ```sql
 SELECT DISTINCT c.client_name
 FROM client c
@@ -42,3 +42,13 @@ WHERE p.tittle = 'DARK MOON MEMORABILIA';
 ```
 
 ## Хранимые процедуры
+
+#### Добавление нового продукта:
+```sql
+CALL AddProduct('HEADLINER', 50, 1500.00, 1, 2);
+```
+
+#### Проверить, что товар был успешно добавлен:
+```sql
+SELECT * FROM products WHERE tittle = 'HEADLINER';
+```
