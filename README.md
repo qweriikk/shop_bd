@@ -43,9 +43,9 @@ WHERE p.tittle = 'DARK MOON MEMORABILIA';
 
 ## Хранимые процедуры
 
-#### Добавление нового продукта:
+#### Добавление товара в корзину:
 ```sql
-CALL AddProduct('HEADLINER', 50, 1500.00, 1, 2);
+call mydb.add_product_to_basket(1, 1);
 ```
 
 #### Проверить, что товар был успешно добавлен:
