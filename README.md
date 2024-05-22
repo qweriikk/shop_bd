@@ -52,3 +52,22 @@ CALL AddProduct('HEADLINER', 50, 1500.00, 1, 2);
 ```sql
 SELECT * FROM products WHERE tittle = 'HEADLINER';
 ```
+
+## Представление
+#### Представление будет содержать информацию о заказах, включая дату заказа, сумму, идентификатор корзины, общую сумму и количество товаров в корзине, а также информацию о клиенте, сделавшем заказ.
+```sql
+SELECT 
+    o.id AS order_id,
+    o.order_date,
+    o.amount,
+    o.basket_id,
+    b.total_sum,
+    b.count,
+    b.client_id,
+    c.client_name,
+    c.client_email,
+    c.client_phone
+FROM orders o
+JOIN basket b ON o.basket_id = b.id
+JOIN client c ON b.client_id = c.id;
+```
