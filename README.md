@@ -50,22 +50,9 @@ call mydb.add_product_to_basket(1, 1);
 
 
 ## Представление
-#### Представление будет содержать информацию о заказах, включая дату заказа, сумму, идентификатор корзины, общую сумму и количество товаров в корзине, а также информацию о клиенте, сделавшем заказ.
+#### Представление позволяет увидеть информацию о клиентах и их заказах.
 ```sql
-SELECT 
-    o.id AS order_id,
-    o.order_date,
-    o.amount,
-    o.basket_id,
-    b.total_sum,
-    b.count,
-    b.client_id,
-    c.client_name,
-    c.client_email,
-    c.client_phone
-FROM orders o
-JOIN basket b ON o.basket_id = b.id
-JOIN client c ON b.client_id = c.id;
+SELECT * FROM mydb.client_orders_view;
 ```
 
 ## Пользовательская функция
