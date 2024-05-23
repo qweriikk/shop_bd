@@ -61,7 +61,7 @@ SELECT * FROM mydb.client_orders_view;
 SELECT count_unique_products_in_basket(1);
 ```
 ## Триггер
-#### Запрос добавит новый заказ и вызовет триггер after_insert_order, который обновит количество товаров на складе.
+#### Запрос добавит новый заказ и вызовет триггер, который обновит количество товаров на складе.
 ```sql
 INSERT INTO orders (order_date, amount, basket_id) VALUES (NOW(), 5000.00, 1);
 ```
