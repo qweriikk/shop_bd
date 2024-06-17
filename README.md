@@ -1,4 +1,4 @@
-![](https://github.com/qweriikk/shop_bd/blob/main/erd_da.png)
+![](https://github.com/qweriikk/shop_bd/blob/main/erd3.png)
 
 ## Типовые запросы 
 ### 1. Получение списка всех клиентов с их данными:
