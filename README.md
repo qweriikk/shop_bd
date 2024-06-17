@@ -47,7 +47,7 @@ WHERE p.tittle = 'DARK MOON MEMORABILIA';
 ```sql
 call mydb.add_product_to_basket(1, 1);
 ```
-
+> Вводить product_id и basket_id.
 
 ## Представление
 #### Представление позволяет увидеть информацию о клиентах и их заказах.
