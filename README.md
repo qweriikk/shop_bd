@@ -6,7 +6,7 @@
 SELECT id, client_name, client_email, client_phone, balance
 FROM client;
 ```
-### 2. Получение товаров в определенной корзине::
+### 2. Получение товаров в определенной корзине:
 ```sql
 SELECT products.* 
 FROM basket_has_products 
@@ -38,7 +38,7 @@ JOIN products ON basket_has_products.products_id = products.id
 WHERE products.tittle = 'DARK MOON MEMORABILIA';
 ```
 
-## Хранимые процедуры
+## Хранимая процедура
 
 #### Добавление товара в корзину:
 ```sql
