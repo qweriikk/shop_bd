@@ -6,12 +6,12 @@
 SELECT id, client_name, client_email, client_phone, balance
 FROM client;
 ```
-### 2. Получение всех заказов для конкретного клиента по ID:
+### 2. ППолучение товаров в определенной корзине::
 ```sql
-SELECT o.id, o.order_date, o.amount
-FROM orders o
-JOIN basket b ON o.basket_id = b.id
-WHERE b.client_id = 1;
+SELECT products.* 
+FROM basket_has_products 
+JOIN products ON basket_has_products.products_id = products.id
+WHERE basket_has_products.basket_id = 3; 
 ```
 
 ### 3. Получение всех продуктов, количество которых меньше определенного значения:
@@ -21,24 +21,21 @@ FROM products
 WHERE quantity < 40;
 ```
 
-### 4. Получение продуктов, заказанных в конкретный период времени:
+### 4. Выборка с использованием LIKE для поиска клиента по имени:
 ```sql
-SELECT p.tittle, o.order_date
-FROM orders o
-JOIN basket b ON o.basket_id = b.id
-JOIN basket_has_products bhp ON b.id = bhp.basket_id
-JOIN products p ON bhp.products_id = p.id
-WHERE o.order_date BETWEEN '2024-05-20' AND '2024-05-25';
+SELECT *
+FROM client
+WHERE client_name LIKE '%Дарья%';
 ```
 
 ### 5. Получение всех клиентов, которые заказывали конкретный продукт:
 ```sql
-SELECT DISTINCT c.client_name
-FROM client c
-JOIN basket b ON c.id = b.client_id
-JOIN basket_has_products bhp ON b.id = bhp.basket_id
-JOIN products p ON bhp.products_id = p.id
-WHERE p.tittle = 'DARK MOON MEMORABILIA';
+SELECT DISTINCT client.client_name
+FROM client 
+JOIN basket ON client.id = basket.client_id
+JOIN basket_has_products ON basket.id = basket_has_products.basket_id
+JOIN products ON basket_has_products.products_id = products.id
+WHERE products.tittle = 'DARK MOON MEMORABILIA';
 ```
 
 ## Хранимые процедуры
