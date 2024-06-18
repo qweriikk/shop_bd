@@ -62,3 +62,19 @@ SELECT count_unique_products_in_basket(1);
 ```sql
 INSERT INTO orders (order_date, amount, basket_id) VALUES (NOW(), 5000.00, 1);
 ```
+
+## Роли
+
+```sql
+-- Создание роли
+CREATE ROLE manager_role;
+
+-- Назначение привилегий для manager_role
+GRANT SELECT, INSERT, UPDATE, DELETE ON kpop.* TO manager_role;
+
+-- Создание пользователя
+CREATE USER 'manager_user'@'localhost' IDENTIFIED BY 'manager_password';
+
+-- Присвоение ролей пользователям
+GRANT manager_role TO 'manager_user'@'localhost';
+```
