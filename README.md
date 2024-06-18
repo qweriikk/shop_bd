@@ -42,7 +42,7 @@ WHERE products.tittle = 'DARK MOON MEMORABILIA';
 
 #### Добавление товара в корзину:
 ```sql
-call mydb.add_product_to_basket(1, 1);
+CALL add_product_to_basket(17, 1);
 ```
 > Вводить product_id и basket_id.
 
