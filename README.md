@@ -64,7 +64,7 @@ INSERT INTO orders (order_date, amount, basket_id) VALUES (NOW(), 5000.00, 1);
 ```
 
 ## Роли
-
+1. Роль: менеджер.
 ```sql
 -- Создание роли
 CREATE ROLE manager_role;
@@ -78,3 +78,20 @@ CREATE USER 'manager_user'@'localhost' IDENTIFIED BY 'manager_password';
 -- Присвоение ролей пользователям
 GRANT manager_role TO 'manager_user'@'localhost';
 ```
+> Эти привилегии позволяют роли полностью управлять данными в таблицах бд, включая чтение, добавление, обновление и удаление данных.
+
+2. Роль: клиент.
+```sql
+-- Создание роли
+CREATE ROLE client_role;
+
+-- Назначение привилегий для client_role
+GRANT SELECT, INSERT ON kpop.* TO client_role;
+
+-- Создание пользователя
+CREATE USER 'client_user'@'localhost' IDENTIFIED BY 'client_password';
+
+-- Присвоение ролей пользователям
+GRANT client_role TO 'client_user'@'localhost';
+```
+> Роль ограничена функциональностью добавления и чтения данных. 
