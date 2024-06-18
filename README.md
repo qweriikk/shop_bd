@@ -6,7 +6,7 @@
 SELECT id, client_name, client_email, client_phone, balance
 FROM client;
 ```
-### 2. ППолучение товаров в определенной корзине::
+### 2. Получение товаров в определенной корзине::
 ```sql
 SELECT products.* 
 FROM basket_has_products 
