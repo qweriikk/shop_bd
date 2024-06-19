@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: kpop
 -- ------------------------------------------------------
--- Server version	8.0.35
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -148,6 +148,25 @@ LOCK TABLES `groups` WRITE;
 INSERT INTO `groups` VALUES (4,'seventeen'),(5,'enhypen'),(6,'stray kids');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `order_summary`
+--
+
+DROP TABLE IF EXISTS `order_summary`;
+/*!50001 DROP VIEW IF EXISTS `order_summary`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `order_summary` AS SELECT 
+ 1 AS `order_id`,
+ 1 AS `client_name`,
+ 1 AS `client_email`,
+ 1 AS `client_phone`,
+ 1 AS `order_date`,
+ 1 AS `amount`,
+ 1 AS `product_title`,
+ 1 AS `product_count`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `orders`
@@ -444,6 +463,24 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Final view structure for view `order_summary`
+--
+
+/*!50001 DROP VIEW IF EXISTS `order_summary`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `order_summary` AS select `orders`.`id` AS `order_id`,`client`.`client_name` AS `client_name`,`client`.`client_email` AS `client_email`,`client`.`client_phone` AS `client_phone`,`orders`.`order_date` AS `order_date`,`orders`.`amount` AS `amount`,`products`.`tittle` AS `product_title`,`basket_has_products`.`count` AS `product_count` from ((((`orders` join `basket` on((`orders`.`basket_id` = `basket`.`id`))) join `client` on((`basket`.`client_id` = `client`.`id`))) join `basket_has_products` on((`basket`.`id` = `basket_has_products`.`basket_id`))) join `products` on((`basket_has_products`.`products_id` = `products`.`id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -454,4 +491,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-18 11:54:02
+-- Dump completed on 2024-06-19 16:18:27
